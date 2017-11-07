@@ -63,7 +63,7 @@ fi
 # 新建tomcat实例
 tar zxvf ${CATALINA_BASE_TAR} -C ${baseHome}
 mv ${baseHome}/tomcat_home_template ${baseHome}/tomcat
-cp tomcat-server-normal.xml ${baseHome}/tomcat/conf/server.xml
+cp ../configuration/tomcat/tomcat-server-normal.xml ${baseHome}/tomcat/conf/server.xml
 
 # 默认关闭ajp，并且修改http port为指定值
 PORT1=$[8000+${port}*6+1]

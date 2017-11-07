@@ -32,13 +32,20 @@ systemctl start firewalld
 firewall-cmd --add-service=http --permanent
 
 # 安装tomcat，清华大学源，据说速度很快
+echo "starting to install tomcat8"
 GZTomcat=`ls ../configuration/tomcat/apache-tomcat*`
-catalinaHome=`ls /usr/apache-tomcat* -d`
+
 tar -C /usr -xzf $GZTomcat
+
+catalinaHome=`ls /usr/apache-tomcat* -d`
+
 # tomcat空实例
 cp ../configuration/tomcat/tomcat_base.tar.gz ${catalinaHome}/
 #  systemctl管理需要用到的tomcat.service
 cp ../configuration/tomcat/tomcat.service ${catalinaHome}/bin/
+
+chown -R root:root ${catalinaHome}
+chmod +x ${catalinaHome}/bin/*.sh
 
 # 设置环境变量
 echo "export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk" >> /etc/environment

@@ -9,7 +9,7 @@ if [ $UID -ne 0 ]; then
 fi
 
 #设置一下主机名
-echo -n "please set the host name"
+echo -n "please set the host name："
 read hostname
 
 if [[ ! $hostname ]]; then
